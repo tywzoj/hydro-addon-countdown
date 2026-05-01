@@ -18,7 +18,7 @@ interface ICountdownEvents {
 
 type HomeHandler = typeof Handler & {
     prototype: Handler & {
-        getCountdown(): ICountdownEvents;
+        getCountdown(): Promise<ICountdownEvents>;
     };
 };
 
@@ -111,7 +111,7 @@ export function apply(ctx: Context) {
             todayCache.date = todayStr;
             todayCache.events = result;
 
-            return result;
+            return Promise.resolve(result);
         };
     });
 }
