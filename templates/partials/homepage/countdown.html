@@ -27,7 +27,7 @@
           {%- for event in payload.today -%}
           <li class="countdown-event-list-item">
             <span class="left">{{ event.name }}</span>
-            <span class="right">{{ event.date }}</span>
+            <!-- <span class="right">{{ event.date }}</span> -->
           </li>
           {%- endfor -%}
         </ol>
@@ -39,7 +39,7 @@
           {%- for event in payload.upcoming -%}
           <li class="countdown-event-list-item">
             <span class="left">{{ _("{0} — {1} day(s) left").format(event.name, event.diff) }}</span>
-            <span class="right">{{ event.date }}</span>
+            <!-- <span class="right">{{ event.date }}</span> -->
           </li>
           {%- endfor -%}
         </ol>
@@ -51,7 +51,7 @@
           {%- for event in payload.past -%}
           <li class="countdown-event-list-item">
             <span class="left"> {{ _("{0} — {1} day(s) ago").format(event.name, -event.diff) }} </span>
-            <span class="right">{{ event.date }}</span>
+            <!-- <span class="right">{{ event.date }}</span> -->
           </li>
           {%- endfor -%}
         </ol>
