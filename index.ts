@@ -29,7 +29,7 @@ const enum CE_String {
     SectionToday = "Today's Events",
     SectionUpcoming = "Upcoming Events",
     SectionPast = "Past Events",
-    UpcomingEvent = "{0} — {1} day(s) left",
+    UpcomingEvent = "{0} — in {1} day(s)",
     PastEvent = "{0} — {1} day(s) ago",
 }
 
@@ -40,8 +40,8 @@ const strings: Record<string, Record<CE_String, string>> = {
         [CE_String.SectionToday]: "今日事件",
         [CE_String.SectionUpcoming]: "即将到来",
         [CE_String.SectionPast]: "已过事件",
-        [CE_String.UpcomingEvent]: "距离 {0} 还有 {1} 天",
-        [CE_String.PastEvent]: "距离 {0} 已过去 {1} 天",
+        [CE_String.UpcomingEvent]: "{0}—还有{1}天",
+        [CE_String.PastEvent]: "{0}—{1}天前",
     },
     zh_TW: {
         [CE_String.SettingDescription]: "倒數計時設置",
@@ -49,8 +49,8 @@ const strings: Record<string, Record<CE_String, string>> = {
         [CE_String.SectionToday]: "今日事件",
         [CE_String.SectionUpcoming]: "即將到來",
         [CE_String.SectionPast]: "已過事件",
-        [CE_String.UpcomingEvent]: "距離 {0} 還有 {1} 天",
-        [CE_String.PastEvent]: "距離 {0} 已過去 {1} 天",
+        [CE_String.UpcomingEvent]: "{0}—還有{1}天",
+        [CE_String.PastEvent]: "{0}—{1}天前",
     },
 };
 
