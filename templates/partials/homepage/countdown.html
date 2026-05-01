@@ -1,0 +1,39 @@
+<div class="section side">
+  <div class="section__header">
+    <h1 class="section__title">{{ _("Events Overview") }}</h1>
+  </div>
+  <div class="section__body">
+    <ul class="group-list">
+      {% if payload.today.length > 0 %}
+      <li class="group-list__item">
+        <h2 class="section__title">{{ _("Today's Events") }}</h2>
+        <ol class="typo">
+          {%- for event in payload.today -%}
+          <li>{{ event.name }}</li>
+          {%- endfor -%}
+        </ol>
+      </li>
+      {% endif %}
+      {% if payload.upcoming.length > 0 %}
+      <li class="group-list__item">
+        <h2 class="section__title">{{ _("Upcoming Events") }}</h2>
+        <ol class="typo">
+          {%- for event in payload.upcoming -%}
+          <li>{{ _("{0} — {1} day(s) left", event.name, event.diff) }}</li>
+          {%- endfor -%}
+        </ol>
+      </li>
+      {% endif %}
+      {% if payload.past.length > 0 %}
+      <li class="group-list__item">
+        <h2 class="section__title">{{ _("Past Events") }}</h2>
+        <ol class="typo">
+          {%- for event in payload.past -%}
+          <li>{{ _("{0} — {1} day(s) ago", event.name, event.diff) }}</li>
+          {%- endfor -%}
+        </ol>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</div>
