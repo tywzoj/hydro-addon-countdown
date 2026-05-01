@@ -61,7 +61,7 @@ const todayCache: {
 } = {};
 
 export function apply(ctx: Context) {
-    ctx.inject(["settings"], (ctx) => {
+    ctx.inject(["setting"], (ctx) => {
         ctx.setting.SystemSetting(
             SettingModel.Setting("setting_basic", SETTING_KEY, [], "yaml", SETTING_KEY, CE_String.SettingDescription),
         );
