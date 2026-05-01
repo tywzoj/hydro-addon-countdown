@@ -1,3 +1,21 @@
+<style>
+  .countdown-event-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .countdown-event-list-item .left {
+    flex: 1;
+    text-align: left;
+    word-break: break-word;
+  }
+  .countdown-event-list-item .right {
+    text-align: right;
+    white-space: nowrap;
+    color: #646464;
+  }
+</style>
 <div class="section side">
   <div class="section__header">
     <h1 class="section__title">{{ _("Events Overview") }}</h1>
@@ -7,37 +25,35 @@
       {% if payload.today.length > 0 %}
       <li class="group-list__item">
         <h2 class="section__title">{{ _("Today's Events") }}</h2>
-        <ol class="typo">
+        <ol class="countdown-event-list typo">
           {%- for event in payload.today -%}
-          <li>
-            {{ event.name }}
-            <span style="float: right; color: #646464;">{{ event.date }}</span>
+          <li class="countdown-event-list-item">
+            <span class="left">{{ event.name }}</span>
+            <span class="right">{{ event.date }}</span>
           </li>
           {%- endfor -%}
         </ol>
       </li>
-      {% endif %}
-      {% if payload.upcoming.length > 0 %}
+      {% endif %} {% if payload.upcoming.length > 0 %}
       <li class="group-list__item">
         <h2 class="section__title">{{ _("Upcoming Events") }}</h2>
-        <ol class="typo">
+        <ol class="countdown-event-list  typo">
           {%- for event in payload.upcoming -%}
-          <li>
-            {{ _("{0} — {1} day(s) left").format(event.name, event.diff) }}
-            <span style="float: right; color: #646464;">{{ event.date }}</span>
+          <li class="countdown-event-list-item">
+            <span class="left">{{ _("{0} — {1} day(s) left").format(event.name, event.diff) }}</span>
+            <span class="right">{{ event.date }}</span>
           </li>
           {%- endfor -%}
         </ol>
       </li>
-      {% endif %}
-      {% if payload.past.length > 0 %}
+      {% endif %} {% if payload.past.length > 0 %}
       <li class="group-list__item">
         <h2 class="section__title">{{ _("Past Events") }}</h2>
-        <ol class="typo">
+        <ol class="countdown-event-list typo">
           {%- for event in payload.past -%}
-          <li>
-            {{ _("{0} — {1} day(s) ago").format(event.name, -event.diff) }}
-            <span style="float: right; color: #646464;">{{ event.date }}</span>
+          <li class="countdown-event-list-item">
+            <span class="left"> {{ _("{0} — {1} day(s) ago").format(event.name, -event.diff) }} </span>
+            <span class="right">{{ event.date }}</span>
           </li>
           {%- endfor -%}
         </ol>
