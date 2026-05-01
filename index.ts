@@ -79,7 +79,7 @@ export function apply(ctx: Context) {
             const todayStr = today.format("YYYY-MM-DD");
 
             if (todayCache.date === todayStr && todayCache.events) {
-                return todayCache.events;
+                return Promise.resolve(todayCache.events);
             }
 
             const eventsSetting: string = (ctx.setting.get(SETTING_KEY) as string | undefined) || "[]";
