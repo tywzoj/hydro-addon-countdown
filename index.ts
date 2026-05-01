@@ -108,10 +108,20 @@ export function apply(ctx: Context) {
                 }
             });
 
+            result.upcoming.sort((a, b) => a.diff - b.diff);
+            result.past.sort((a, b) => b.diff - a.diff);
+
             todayCache.date = todayStr;
             todayCache.events = result;
 
             return Promise.resolve(result);
         };
+    });
+
+    ctx.on("system/setting", (args) => {
+        if (SETTING_KEY in args) {
+            delete todayCache.date;
+            delete todayCache.events;
+        }
     });
 }
