@@ -2,22 +2,23 @@ import type { Context, Handler } from "hydrooj";
 import { moment, SettingModel, yaml } from "hydrooj";
 
 interface ICountdownEvent {
-    name: string;
-    date: string;
+    readonly name: string;
+    readonly date: string;
 }
 
 interface ICountdownEventWithDiff extends ICountdownEvent {
-    diff: number;
+    readonly diff: number;
 }
 
 interface ICountdownEvents {
-    today: ICountdownEventWithDiff[];
-    upcoming: ICountdownEventWithDiff[];
-    past: ICountdownEventWithDiff[];
+    readonly date: string;
+    readonly today: ICountdownEventWithDiff[];
+    readonly upcoming: ICountdownEventWithDiff[];
+    readonly past: ICountdownEventWithDiff[];
 }
 
 type HomeHandler = typeof Handler & {
-    prototype: Handler & {
+    readonly prototype: Handler & {
         getCountdown(): Promise<ICountdownEvents>;
     };
 };
@@ -53,12 +54,10 @@ const strings: Record<string, Record<CE_String, string>> = {
     },
 };
 
+const DATE_FORMAT = "YYYY-M-D";
 const SETTING_KEY = "countdown.events";
 
-const todayCache: {
-    date?: string;
-    events?: ICountdownEvents;
-} = {};
+let cache: ICountdownEvents | null = null;
 
 export function apply(ctx: Context) {
     ctx.inject(["setting"], (ctx) => {
@@ -76,52 +75,54 @@ export function apply(ctx: Context) {
 
         HomeHandler.prototype.getCountdown = function () {
             const today = moment();
-            const todayStr = today.format("YYYY-MM-DD");
+            const todayStr = today.format(DATE_FORMAT);
 
-            if (todayCache.date === todayStr && todayCache.events) {
-                return Promise.resolve(todayCache.events);
+            if (cache?.date === todayStr) {
+                return Promise.resolve(cache);
             }
 
             const eventsSetting: string = (ctx.setting.get(SETTING_KEY) as string | undefined) || "[]";
             const events = yaml.load(eventsSetting) as ICountdownEvent[];
 
-            const result: ICountdownEvents = {
+            cache = {
+                date: todayStr,
                 today: [],
                 upcoming: [],
                 past: [],
             };
 
-            events.forEach((event) => {
+            for (const event of events) {
                 try {
                     const eventDate = moment(event.date);
-                    const diff = Math.floor((eventDate.unix() - today.unix()) / (60 * 60 * 24));
 
-                    if (diff > 0) {
-                        result.upcoming.push({ ...event, diff });
-                    } else if (diff < 0) {
-                        result.past.push({ ...event, diff: -diff });
+                    const eventWithDiff: ICountdownEventWithDiff = {
+                        name: event.name,
+                        date: eventDate.format(DATE_FORMAT),
+                        diff: eventDate.diff(today, "days"),
+                    };
+
+                    if (eventWithDiff.diff > 0) {
+                        cache.upcoming.push(eventWithDiff);
+                    } else if (eventWithDiff.diff < 0) {
+                        cache.past.push(eventWithDiff);
                     } else {
-                        result.today.push({ ...event, diff: 0 });
+                        cache.today.push(eventWithDiff);
                     }
                 } catch {
                     // Invalid date format, ignore this event
                 }
-            });
+            }
 
-            result.upcoming.sort((a, b) => a.diff - b.diff);
-            result.past.sort((a, b) => b.diff - a.diff);
+            cache.upcoming.sort((a, b) => a.diff - b.diff);
+            cache.past.sort((a, b) => b.diff - a.diff);
 
-            todayCache.date = todayStr;
-            todayCache.events = result;
-
-            return Promise.resolve(result);
+            return Promise.resolve(cache);
         };
     });
 
     ctx.on("system/setting", (args) => {
         if (SETTING_KEY in args) {
-            delete todayCache.date;
-            delete todayCache.events;
+            cache = null; // Invalidate cache when settings change
         }
     });
 }

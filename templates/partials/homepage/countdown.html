@@ -9,7 +9,10 @@
         <h2 class="section__title">{{ _("Today's Events") }}</h2>
         <ol class="typo">
           {%- for event in payload.today -%}
-          <li>{{ event.name }}</li>
+          <li>
+            {{ event.name }}
+            <span style="float: right; color: #646464;">{{ event.date }}</span>
+          </li>
           {%- endfor -%}
         </ol>
       </li>
@@ -19,7 +22,10 @@
         <h2 class="section__title">{{ _("Upcoming Events") }}</h2>
         <ol class="typo">
           {%- for event in payload.upcoming -%}
-          <li>{{ _("{0} — {1} day(s) left").format(event.name, event.diff) }}</li>
+          <li>
+            {{ _("{0} — {1} day(s) left").format(event.name, event.diff) }}
+            <span style="float: right; color: #646464;">{{ event.date }}</span>
+          </li>
           {%- endfor -%}
         </ol>
       </li>
@@ -29,7 +35,10 @@
         <h2 class="section__title">{{ _("Past Events") }}</h2>
         <ol class="typo">
           {%- for event in payload.past -%}
-          <li>{{ _("{0} — {1} day(s) ago").format(event.name, event.diff) }}</li>
+          <li>
+            {{ _("{0} — {1} day(s) ago").format(event.name, -event.diff) }}
+            <span style="float: right; color: #646464;">{{ event.date }}</span>
+          </li>
           {%- endfor -%}
         </ol>
       </li>
