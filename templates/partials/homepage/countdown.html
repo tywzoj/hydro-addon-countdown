@@ -38,7 +38,7 @@
         <ol class="countdown-event-list  typo">
           {%- for event in payload.upcoming -%}
           <li class="countdown-event-list-item">
-            <span class="left">{{ _("{0} — {1} day(s) left").format(event.name, event.diff) }}</span>
+            <span class="left">{{ _("{0} — in {1} day(s)").format(event.name, event.diff) }}</span>
             <!-- <span class="right">{{ event.date }}</span> -->
           </li>
           {%- endfor -%}
