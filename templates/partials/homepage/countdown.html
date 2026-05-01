@@ -1,0 +1,62 @@
+<style>
+  .countdown-event-list-item::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .countdown-event-list-item .left {
+    display: inline;
+  }
+  .countdown-event-list-item .right {
+    float: right;
+    white-space: nowrap;
+    margin-left: 8px;
+    color: #646464;
+  }
+</style>
+<div class="section side">
+  <div class="section__header">
+    <h1 class="section__title">{{ _("Events Overview") }}</h1>
+  </div>
+  <div class="section__body">
+    <ul class="group-list">
+      {% if payload.today.length > 0 %}
+      <li class="group-list__item">
+        <h2 class="section__title">{{ _("Today's Events") }}</h2>
+        <ol class="countdown-event-list typo">
+          {%- for event in payload.today -%}
+          <li class="countdown-event-list-item">
+            <span class="left">{{ event.name }}</span>
+            <!-- <span class="right">{{ event.date }}</span> -->
+          </li>
+          {%- endfor -%}
+        </ol>
+      </li>
+      {% endif %} {% if payload.upcoming.length > 0 %}
+      <li class="group-list__item">
+        <h2 class="section__title">{{ _("Upcoming Events") }}</h2>
+        <ol class="countdown-event-list  typo">
+          {%- for event in payload.upcoming -%}
+          <li class="countdown-event-list-item">
+            <span class="left">{{ _("{0} — in {1} day(s)").format(event.name, event.diff) }}</span>
+            <!-- <span class="right">{{ event.date }}</span> -->
+          </li>
+          {%- endfor -%}
+        </ol>
+      </li>
+      {% endif %} {% if payload.past.length > 0 %}
+      <li class="group-list__item">
+        <h2 class="section__title">{{ _("Past Events") }}</h2>
+        <ol class="countdown-event-list typo">
+          {%- for event in payload.past -%}
+          <li class="countdown-event-list-item">
+            <span class="left"> {{ _("{0} — {1} day(s) ago").format(event.name, -event.diff) }} </span>
+            <!-- <span class="right">{{ event.date }}</span> -->
+          </li>
+          {%- endfor -%}
+        </ol>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</div>
