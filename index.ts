@@ -74,7 +74,7 @@ export function apply(ctx: Context) {
         const HomeHandler = handler as HomeHandler;
 
         HomeHandler.prototype.getCountdown = function () {
-            const today = moment();
+            const today = moment().startOf("day");
             const todayStr = today.format(DATE_FORMAT);
 
             if (cache?.date === todayStr) {
@@ -93,7 +93,7 @@ export function apply(ctx: Context) {
 
             for (const event of events) {
                 try {
-                    const eventDate = moment(event.date);
+                    const eventDate = moment(event.date).startOf("day");
 
                     const eventWithDiff: ICountdownEventWithDiff = {
                         name: event.name,
