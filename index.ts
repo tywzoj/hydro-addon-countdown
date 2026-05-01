@@ -25,9 +25,9 @@ type HomeHandler = typeof Handler & {
 const enum CE_String {
     SettingDescription = "Countdown settings",
     Title = "Events Overview",
-    SectionToday = "Today",
-    SectionUpcoming = "Upcoming",
-    SectionPast = "Past",
+    SectionToday = "Today's Events",
+    SectionUpcoming = "Upcoming Events",
+    SectionPast = "Past Events",
     UpcomingEvent = "{0} — {1} day(s) left",
     PastEvent = "{0} — {1} day(s) ago",
 }
