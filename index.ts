@@ -40,8 +40,8 @@ const strings: Record<string, Record<CE_String, string>> = {
         [CE_String.SectionToday]: "今日事件",
         [CE_String.SectionUpcoming]: "即将到来",
         [CE_String.SectionPast]: "已过事件",
-        [CE_String.UpcomingEvent]: "{0}—还有{1}天",
-        [CE_String.PastEvent]: "{0}—{1}天前",
+        [CE_String.UpcomingEvent]: "{0} — 还有{1}天",
+        [CE_String.PastEvent]: "{0} — {1}天前",
     },
     zh_TW: {
         [CE_String.SettingDescription]: "倒數計時設置",
@@ -49,8 +49,17 @@ const strings: Record<string, Record<CE_String, string>> = {
         [CE_String.SectionToday]: "今日事件",
         [CE_String.SectionUpcoming]: "即將到來",
         [CE_String.SectionPast]: "已過事件",
-        [CE_String.UpcomingEvent]: "{0}—還有{1}天",
-        [CE_String.PastEvent]: "{0}—{1}天前",
+        [CE_String.UpcomingEvent]: "{0} — 還有{1}天",
+        [CE_String.PastEvent]: "{0} — {1}天前",
+    },
+    ko: {
+        [CE_String.SettingDescription]: "카운트다운 설정",
+        [CE_String.Title]: "이벤트 개요",
+        [CE_String.SectionToday]: "오늘의 이벤트",
+        [CE_String.SectionUpcoming]: "다가오는 이벤트",
+        [CE_String.SectionPast]: "지난 이벤트",
+        [CE_String.UpcomingEvent]: "{0} — {1}일 남음",
+        [CE_String.PastEvent]: "{0} — {1}일 전",
     },
 };
 
