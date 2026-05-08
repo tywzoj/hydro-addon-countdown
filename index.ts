@@ -36,7 +36,7 @@ const enum CE_String {
 const strings: Record<string, Record<CE_String, string>> = {
     en: {
         [CE_String.SettingDescription]: "Countdown settings",
-        [CE_String.Title]: "Events Overview",
+        [CE_String.Title]: "Important Events",
         [CE_String.SectionToday]: "Today's Events",
         [CE_String.SectionUpcoming]: "Upcoming Events",
         [CE_String.SectionPast]: "Past Events",
@@ -49,7 +49,7 @@ const strings: Record<string, Record<CE_String, string>> = {
     },
     zh: {
         [CE_String.SettingDescription]: "倒计时设置",
-        [CE_String.Title]: "事件总览",
+        [CE_String.Title]: "重要赛事",
         [CE_String.SectionToday]: "今日事件",
         [CE_String.SectionUpcoming]: "即将到来",
         [CE_String.SectionPast]: "已过事件",
@@ -62,7 +62,7 @@ const strings: Record<string, Record<CE_String, string>> = {
     },
     zh_TW: {
         [CE_String.SettingDescription]: "倒數計時設置",
-        [CE_String.Title]: "事件總覽",
+        [CE_String.Title]: "重要賽事",
         [CE_String.SectionToday]: "今日事件",
         [CE_String.SectionUpcoming]: "即將到來",
         [CE_String.SectionPast]: "已過事件",
