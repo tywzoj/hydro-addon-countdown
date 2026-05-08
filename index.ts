@@ -48,9 +48,9 @@ const strings: Record<string, Record<CE_String, string>> = {
     zh: {
         [CE_String.SettingDescription]: "倒计时设置",
         [CE_String.Title]: "重要赛事",
-        [CE_String.SectionToday]: "今日事件",
+        [CE_String.SectionToday]: "今日赛事",
         [CE_String.SectionUpcoming]: "即将到来",
-        [CE_String.SectionPast]: "已过事件",
+        [CE_String.SectionPast]: "已过赛事",
         [CE_String.UpcomingEvent]: `<p class="event-list__left">{0}</p>
 <p class="event-list__right">— 还有<span class="event-list__number event-list__large">{1}</span>天</p>`,
         [CE_String.PastEvent]: `<p class="event-list__left">{0}</p>
@@ -59,9 +59,9 @@ const strings: Record<string, Record<CE_String, string>> = {
     zh_TW: {
         [CE_String.SettingDescription]: "倒數計時設置",
         [CE_String.Title]: "重要賽事",
-        [CE_String.SectionToday]: "今日事件",
+        [CE_String.SectionToday]: "今日賽事",
         [CE_String.SectionUpcoming]: "即將到來",
-        [CE_String.SectionPast]: "已過事件",
+        [CE_String.SectionPast]: "已過賽事",
         [CE_String.UpcomingEvent]: `<p class="event-list__left">{0}</p>
 <p class="event-list__right">— 還有<span class="event-list__number event-list__large">{1}</span>天</p>`,
         [CE_String.PastEvent]: `<p class="event-list__left">{0}</p>
