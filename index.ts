@@ -40,12 +40,10 @@ const strings: Record<string, Record<CE_String, string>> = {
         [CE_String.SectionToday]: "Today's Events",
         [CE_String.SectionUpcoming]: "Upcoming Events",
         [CE_String.SectionPast]: "Past Events",
-        [CE_String.UpcomingEvent]: `
-            <p class="event-list__item__left">{0}</p>
-            <p class="event-list__item__right">— in <span class="event-list__item__number">{1}</span> day(s)</p>`,
-        [CE_String.PastEvent]: `
-            <p class="event-list__item__left">{0}</p>
-            <p class="event-list__item__right">— <span class="event-list__item__number">{1}</span> day(s) ago</p>`,
+        [CE_String.UpcomingEvent]: `<p class="event-list__left">{0}</p>
+<p class="event-list__right">— in <span class="event-list__number event-list__large">{1}</span> day(s)</p>`,
+        [CE_String.PastEvent]: `<p class="event-list__left">{0}</p>
+<p class="event-list__right">— <span class="event-list__number">{1}</span> day(s) ago</p>`,
     },
     zh: {
         [CE_String.SettingDescription]: "倒计时设置",
@@ -53,12 +51,10 @@ const strings: Record<string, Record<CE_String, string>> = {
         [CE_String.SectionToday]: "今日事件",
         [CE_String.SectionUpcoming]: "即将到来",
         [CE_String.SectionPast]: "已过事件",
-        [CE_String.UpcomingEvent]: `
-            <p class="event-list__item__left">{0}</p>
-            <p class="event-list__item__right">— 还有<span class="event-list__item__number">{1}</span>天</p>`,
-        [CE_String.PastEvent]: `
-            <p class="event-list__item__left">{0}</p>
-            <p class="event-list__item__right">— <span class="event-list__item__number">{1}</span>天前</p>`,
+        [CE_String.UpcomingEvent]: `<p class="event-list__left">{0}</p>
+<p class="event-list__right">— 还有<span class="event-list__number event-list__large">{1}</span>天</p>`,
+        [CE_String.PastEvent]: `<p class="event-list__left">{0}</p>
+<p class="event-list__right">— <span class="event-list__number">{1}</span>天前</p>`,
     },
     zh_TW: {
         [CE_String.SettingDescription]: "倒數計時設置",
@@ -66,12 +62,10 @@ const strings: Record<string, Record<CE_String, string>> = {
         [CE_String.SectionToday]: "今日事件",
         [CE_String.SectionUpcoming]: "即將到來",
         [CE_String.SectionPast]: "已過事件",
-        [CE_String.UpcomingEvent]: `
-            <p class="event-list__item__left">{0}</p>
-            <p class="event-list__item__right">— 還有<span class="event-list__item__number">{1}</span>天</p>`,
-        [CE_String.PastEvent]: `
-            <p class="event-list__item__left">{0}</p>
-            <p class="event-list__item__right">— <span class="event-list__item__number">{1}</span>天前</p>`,
+        [CE_String.UpcomingEvent]: `<p class="event-list__left">{0}</p>
+<p class="event-list__right">— 還有<span class="event-list__number event-list__large">{1}</span>天</p>`,
+        [CE_String.PastEvent]: `<p class="event-list__left">{0}</p>
+<p class="event-list__right">— <span class="event-list__number">{1}</span>天前</p>`,
     },
     ko: {
         [CE_String.SettingDescription]: "카운트다운 설정",
@@ -79,12 +73,10 @@ const strings: Record<string, Record<CE_String, string>> = {
         [CE_String.SectionToday]: "오늘의 이벤트",
         [CE_String.SectionUpcoming]: "다가오는 이벤트",
         [CE_String.SectionPast]: "지난 이벤트",
-        [CE_String.UpcomingEvent]: `
-            <p class="event-list__item__left">{0}</p>
-            <p class="event-list__item__right">— <span class="event-list__item__number">{1}</span>일 남음</p>`,
-        [CE_String.PastEvent]: `
-            <p class="event-list__item__left">{0}</p>
-            <p class="event-list__item__right">— <span class="event-list__item__number">{1}</span>일 전</p>`,
+        [CE_String.UpcomingEvent]: `<p class="event-list__left">{0}</p>
+<p class="event-list__right">— <span class="event-list__number event-list__large">{1}</span>일 남음</p>`,
+        [CE_String.PastEvent]: `<p class="event-list__left">{0}</p>
+<p class="event-list__right">— <span class="event-list__number">{1}</span>일 전</p>`,
     },
 };
 
