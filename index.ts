@@ -7,7 +7,7 @@ interface ICountdownEvent {
 }
 
 interface ICountdownEventWithDiff extends ICountdownEvent {
-    readonly diff: number;
+    diff: number;
 }
 
 interface ICountdownEvents {
@@ -113,6 +113,7 @@ export function apply(ctx: Context) {
                     if (eventWithDiff.diff > 0) {
                         cache.upcoming.push(eventWithDiff);
                     } else if (eventWithDiff.diff < 0) {
+                        eventWithDiff.diff = -eventWithDiff.diff;
                         cache.past.push(eventWithDiff);
                     } else {
                         cache.today.push(eventWithDiff);
