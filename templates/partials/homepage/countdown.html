@@ -1,20 +1,14 @@
 <style>
   @font-face {
     font-family: digital;
-    src: url('{{ UiContext.cdn_prefix }}/digital-7_mono.ttf') format("truetype");
-  }
-  .event-list__item::after {
-    content: "";
-    display: block;
-    clear: both;
+    src: url('{{ UiContext.cdn_prefix }}digital-7_mono.ttf') format("truetype");
   }
   .event-list__item__left {
     display: inline;
   }
   .event-list__item__right {
-    float: right;
+    text-align: right;
     white-space: nowrap;
-    margin-left: 1em;
   }
   .event-list__item__number {
     font-size: 1.8rem;
