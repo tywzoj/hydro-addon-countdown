@@ -7,7 +7,7 @@ interface ICountdownEvent {
 }
 
 interface ICountdownEventWithDiff extends ICountdownEvent {
-    diff: number;
+    readonly diff: number;
 }
 
 interface ICountdownEvents {
@@ -24,24 +24,41 @@ type HomeHandler = typeof Handler & {
 };
 
 const enum CE_String {
-    SettingDescription = "Countdown settings",
-    Title = "Events Overview",
-    SectionToday = "Today's Events",
-    SectionUpcoming = "Upcoming Events",
-    SectionPast = "Past Events",
-    UpcomingEvent = "{0} — in {1} day(s)",
-    PastEvent = "{0} — {1} day(s) ago",
+    SettingDescription = "CountdownEvent_SettingDescription",
+    Title = "CountdownEvent_Title",
+    SectionToday = "CountdownEvent_SectionToday",
+    SectionUpcoming = "CountdownEvent_SectionUpcoming",
+    SectionPast = "CountdownEvent_SectionPast",
+    UpcomingEvent = "CountdownEvent_UpcomingEvent",
+    PastEvent = "CountdownEvent_PastEvent",
 }
 
 const strings: Record<string, Record<CE_String, string>> = {
+    en: {
+        [CE_String.SettingDescription]: "Countdown settings",
+        [CE_String.Title]: "Events Overview",
+        [CE_String.SectionToday]: "Today's Events",
+        [CE_String.SectionUpcoming]: "Upcoming Events",
+        [CE_String.SectionPast]: "Past Events",
+        [CE_String.UpcomingEvent]: `
+            <span class="event-list__item__left">{0}</span>
+            <span class="event-list__item__right">— in <span class="event-list__item__number">{1}</span> day(s)</span>`,
+        [CE_String.PastEvent]: `
+            <span class="event-list__item__left">{0}</span>
+            <span class="event-list__item__right">— <span class="event-list__item__number">{1}</span> day(s) ago</span>`,
+    },
     zh: {
         [CE_String.SettingDescription]: "倒计时设置",
         [CE_String.Title]: "事件总览",
         [CE_String.SectionToday]: "今日事件",
         [CE_String.SectionUpcoming]: "即将到来",
         [CE_String.SectionPast]: "已过事件",
-        [CE_String.UpcomingEvent]: "{0} — 还有{1}天",
-        [CE_String.PastEvent]: "{0} — {1}天前",
+        [CE_String.UpcomingEvent]: `
+            <span class="event-list__item__left">{0}</span>
+            <span class="event-list__item__right">— 还有<span class="event-list__item__number">{1}</span>天</span>`,
+        [CE_String.PastEvent]: `
+            <span class="event-list__item__left">{0}</span>
+            <span class="event-list__item__right">— <span class="event-list__item__number">{1}</span>天前</span>`,
     },
     zh_TW: {
         [CE_String.SettingDescription]: "倒數計時設置",
@@ -49,8 +66,12 @@ const strings: Record<string, Record<CE_String, string>> = {
         [CE_String.SectionToday]: "今日事件",
         [CE_String.SectionUpcoming]: "即將到來",
         [CE_String.SectionPast]: "已過事件",
-        [CE_String.UpcomingEvent]: "{0} — 還有{1}天",
-        [CE_String.PastEvent]: "{0} — {1}天前",
+        [CE_String.UpcomingEvent]: `
+            <span class="event-list__item__left">{0}</span>
+            <span class="event-list__item__right">— 還有<span class="event-list__item__number">{1}</span>天</span>`,
+        [CE_String.PastEvent]: `
+            <span class="event-list__item__left">{0}</span>
+            <span class="event-list__item__right">— <span class="event-list__item__number">{1}</span>天前</span>`,
     },
     ko: {
         [CE_String.SettingDescription]: "카운트다운 설정",
@@ -58,8 +79,12 @@ const strings: Record<string, Record<CE_String, string>> = {
         [CE_String.SectionToday]: "오늘의 이벤트",
         [CE_String.SectionUpcoming]: "다가오는 이벤트",
         [CE_String.SectionPast]: "지난 이벤트",
-        [CE_String.UpcomingEvent]: "{0} — {1}일 남음",
-        [CE_String.PastEvent]: "{0} — {1}일 전",
+        [CE_String.UpcomingEvent]: `
+            <span class="event-list__item__left">{0}</span>
+            <span class="event-list__item__right">— <span class="event-list__item__number">{1}</span>일 남음</span>`,
+        [CE_String.PastEvent]: `
+            <span class="event-list__item__left">{0}</span>
+            <span class="event-list__item__right">— <span class="event-list__item__number">{1}</span>일 전</span>`,
     },
 };
 
@@ -113,7 +138,6 @@ export function apply(ctx: Context) {
                     if (eventWithDiff.diff > 0) {
                         cache.upcoming.push(eventWithDiff);
                     } else if (eventWithDiff.diff < 0) {
-                        eventWithDiff.diff = -eventWithDiff.diff;
                         cache.past.push(eventWithDiff);
                     } else {
                         cache.today.push(eventWithDiff);
