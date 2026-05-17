@@ -24,33 +24,48 @@ type HomeHandler = typeof Handler & {
 };
 
 const enum CE_String {
-    SettingDescription = "Countdown settings",
-    Title = "Events Overview",
-    SectionToday = "Today's Events",
-    SectionUpcoming = "Upcoming Events",
-    SectionPast = "Past Events",
-    UpcomingEvent = "{0} — in {1} day(s)",
-    PastEvent = "{0} — {1} day(s) ago",
+    SettingDescription = "CountdownEvent_SettingDescription",
+    Title = "CountdownEvent_Title",
+    SectionToday = "CountdownEvent_SectionToday",
+    SectionUpcoming = "CountdownEvent_SectionUpcoming",
+    SectionPast = "CountdownEvent_SectionPast",
+    UpcomingEvent = "CountdownEvent_UpcomingEvent",
+    PastEvent = "CountdownEvent_PastEvent",
 }
 
 const strings: Record<string, Record<CE_String, string>> = {
+    en: {
+        [CE_String.SettingDescription]: "Countdown settings",
+        [CE_String.Title]: "Important Events",
+        [CE_String.SectionToday]: "Today's Events",
+        [CE_String.SectionUpcoming]: "Upcoming Events",
+        [CE_String.SectionPast]: "Past Events",
+        [CE_String.UpcomingEvent]: `<p class="event-list__left">{0}</p>
+<p class="event-list__right">— in <span class="event-list__number event-list__large">{1}</span> day(s)</p>`,
+        [CE_String.PastEvent]: `<p class="event-list__left">{0}</p>
+<p class="event-list__right">— <span class="event-list__number">{1}</span> day(s) ago</p>`,
+    },
     zh: {
         [CE_String.SettingDescription]: "倒计时设置",
-        [CE_String.Title]: "事件总览",
-        [CE_String.SectionToday]: "今日事件",
+        [CE_String.Title]: "重要赛事",
+        [CE_String.SectionToday]: "今日赛事",
         [CE_String.SectionUpcoming]: "即将到来",
-        [CE_String.SectionPast]: "已过事件",
-        [CE_String.UpcomingEvent]: "{0} — 还有{1}天",
-        [CE_String.PastEvent]: "{0} — {1}天前",
+        [CE_String.SectionPast]: "已过赛事",
+        [CE_String.UpcomingEvent]: `<p class="event-list__left">{0}</p>
+<p class="event-list__right">— 还有<span class="event-list__number event-list__large">{1}</span>天</p>`,
+        [CE_String.PastEvent]: `<p class="event-list__left">{0}</p>
+<p class="event-list__right">— <span class="event-list__number">{1}</span>天前</p>`,
     },
     zh_TW: {
         [CE_String.SettingDescription]: "倒數計時設置",
-        [CE_String.Title]: "事件總覽",
-        [CE_String.SectionToday]: "今日事件",
+        [CE_String.Title]: "重要賽事",
+        [CE_String.SectionToday]: "今日賽事",
         [CE_String.SectionUpcoming]: "即將到來",
-        [CE_String.SectionPast]: "已過事件",
-        [CE_String.UpcomingEvent]: "{0} — 還有{1}天",
-        [CE_String.PastEvent]: "{0} — {1}天前",
+        [CE_String.SectionPast]: "已過賽事",
+        [CE_String.UpcomingEvent]: `<p class="event-list__left">{0}</p>
+<p class="event-list__right">— 還有<span class="event-list__number event-list__large">{1}</span>天</p>`,
+        [CE_String.PastEvent]: `<p class="event-list__left">{0}</p>
+<p class="event-list__right">— <span class="event-list__number">{1}</span>天前</p>`,
     },
     ko: {
         [CE_String.SettingDescription]: "카운트다운 설정",
@@ -58,8 +73,10 @@ const strings: Record<string, Record<CE_String, string>> = {
         [CE_String.SectionToday]: "오늘의 이벤트",
         [CE_String.SectionUpcoming]: "다가오는 이벤트",
         [CE_String.SectionPast]: "지난 이벤트",
-        [CE_String.UpcomingEvent]: "{0} — {1}일 남음",
-        [CE_String.PastEvent]: "{0} — {1}일 전",
+        [CE_String.UpcomingEvent]: `<p class="event-list__left">{0}</p>
+<p class="event-list__right">— <span class="event-list__number event-list__large">{1}</span>일 남음</p>`,
+        [CE_String.PastEvent]: `<p class="event-list__left">{0}</p>
+<p class="event-list__right">— <span class="event-list__number">{1}</span>일 전</p>`,
     },
 };
 
